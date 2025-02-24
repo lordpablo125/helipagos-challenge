@@ -24,6 +24,7 @@ const PeopleList: FC<T> = ({ people }) => {
   // const { mutate: deleteEmployee } = useDeleteEmployee({
   //   onSuccess: () => window.location.reload()
   // })
+
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
