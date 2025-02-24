@@ -17,7 +17,6 @@ import { FC, useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditNoteIcon from '@mui/icons-material/EditNote'
-import { EmployeeTableProps } from '@/types/types'
 // import { useDeleteEmployee } from '../api'
 
 const PeopleList: FC<T> = ({ people }) => {
