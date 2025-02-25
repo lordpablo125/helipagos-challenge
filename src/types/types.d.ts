@@ -5,7 +5,7 @@ export type DocumentId = {
   documentId: string
 }
 
-export interface Params {
+export interface ParamsType {
   id: string
 }
 
@@ -34,9 +34,5 @@ export interface Person {
 }
 
 export type People = {
-  person?: Person[]
-}
-
-export type EmployeeTableProps = {
-  employees: Employee[]
+  people: Person[]
 }
