@@ -58,8 +58,16 @@ const PeopleList: FC<PeopleList> = ({
             type='text'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className='w-full p-2 mb-4 border rounded'
+            className='w-4/5  mb-4 '
           />
+          <Button
+            className='h-14'
+            variant='outlined'
+            color='primary'
+            onClick={() => setSearch('')}
+          >
+            Clear
+          </Button>
         </Box>
         <Table aria-label='simple table'>
           <TableHead>
