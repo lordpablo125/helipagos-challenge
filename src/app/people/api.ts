@@ -29,10 +29,10 @@ export const useGetPeople = () => {
   return query
 }
 
-export const getPerson = async (documentId: string) => {
+export const getPerson = async (id: string) => {
   try {
-    const response = await api.get(`/people/${documentId}`)
-    const data = (await response?.data.data) || {}
+    const response = await api.get(`/people/${id}/`)
+    const data = (await response?.data) || {}
 
     return data
   } catch (error) {
@@ -42,10 +42,10 @@ export const getPerson = async (documentId: string) => {
 }
 
 export const useGetPerson = (documentId: string) => {
-  const { data } = useQuery({
-    queryKey: ['people'],
+  const query = useQuery({
+    queryKey: ['person'],
     queryFn: () => getPerson(documentId)
   })
 
-  return data
+  return query
 }
