@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 import PeopleList from './components/PeopleList'
-import { useGetPeoples } from './api'
+import { useGetPeople } from './api'
 
 const PagePeopleList = () => {
-  const { data, isLoading, error } = useGetPeoples()
+  const { data, isLoading, error } = useGetPeople()
 
   return (
     <PeopleList
