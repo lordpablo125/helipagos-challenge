@@ -15,12 +15,20 @@ import {
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import EditNoteIcon from '@mui/icons-material/EditNote'
+import { Person } from '@/types/types'
 
-const PeopleList: FC<T> = ({ people, isLoadingPeople, errorLoading }) => {
+type PeopleList = {
+  people: Person[]
+  isLoadingPeople: boolean
+  errorLoading: boolean
+}
+
+const PeopleList: FC<PeopleList> = ({
+  people,
+  isLoadingPeople,
+  errorLoading
+}) => {
   const [search, setSearch] = useState('')
-  const filteredPeople = people?.filter((person) =>
-    person.name.toLowerCase().includes(search.toLowerCase())
-  )
 
   if (isLoadingPeople) {
     return <>Loading...</>
@@ -29,6 +37,10 @@ const PeopleList: FC<T> = ({ people, isLoadingPeople, errorLoading }) => {
   if (errorLoading) {
     return <>Error!</>
   }
+
+  const filteredPeople = people?.filter((person) =>
+    person.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   return (
     <Box className='flex flex-col items-start pl-4 '>
@@ -62,7 +74,7 @@ const PeopleList: FC<T> = ({ people, isLoadingPeople, errorLoading }) => {
           <TableBody>
             {people?.length > 0 &&
               filteredPeople.map(
-                ({ height, name, gender, birth_year }: any) => (
+                ({ id, name, height, gender, birth_year }: any) => (
                   <TableRow
                     key={name + birth_year}
                     className='hover:bg-slate-300'
@@ -74,7 +86,7 @@ const PeopleList: FC<T> = ({ people, isLoadingPeople, errorLoading }) => {
                     <TableCell>
                       <Box>
                         <Link
-                          href={`/people/edit/${name}`}
+                          href={`/people/${id}`}
                           className='ml-auto mr-4'
                           passHref
                         >
