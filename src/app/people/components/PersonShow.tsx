@@ -22,7 +22,7 @@ const PersonShow: FC<PersonShowProps> = ({ person, isLoading, error }) => {
   return (
     <Box className='flex justify-center flex-col'>
       <Typography className='text-center' variant='h2'>
-        Person detail
+        Person details
       </Typography>
       <Box
         component='form'
@@ -38,28 +38,28 @@ const PersonShow: FC<PersonShowProps> = ({ person, isLoading, error }) => {
         <TextField
           id='outlined-disabled'
           defaultValue={person?.birth_year}
-          label='birth_year'
+          label='Birth Year'
           variant='standard'
           disabled
         />
         <TextField
           id='outlined-disabled'
           defaultValue={person?.mass}
-          label='mass'
+          label='Mass'
           variant='standard'
           disabled
         />
         <TextField
           id='outlined-disabled'
           defaultValue={person?.hair_color}
-          label='hair_color'
+          label='Hair Color'
           variant='standard'
           disabled
         />
         <TextField
           id='outlined-disabled'
           defaultValue={person?.skin_color}
-          label='skin_color'
+          label='Skin Color'
           variant='standard'
           disabled
         />
@@ -67,14 +67,14 @@ const PersonShow: FC<PersonShowProps> = ({ person, isLoading, error }) => {
           id='outlined-disabled'
           defaultValue={person?.eye_color}
           variant='standard'
-          label='eye_color'
+          label='Eye Color'
           disabled
         />
         <TextField
           id='outlined-disabled'
           defaultValue={person?.gender}
           variant='standard'
-          label='gender'
+          label='Gender'
           disabled
         />
 
