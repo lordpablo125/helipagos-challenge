@@ -4,9 +4,15 @@ import PeopleList from './components/PeopleList'
 import { useGetPeoples } from './api'
 
 const PagePeopleList = () => {
-  const data = useGetPeoples()
+  const { data, isLoading, error } = useGetPeoples()
 
-  return <PeopleList people={data} />
+  return (
+    <PeopleList
+      people={data}
+      isLoadingPeople={isLoading}
+      errorLoading={error}
+    />
+  )
 }
 
 export default PagePeopleList
