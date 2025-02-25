@@ -1,32 +1,35 @@
 import { api } from '@/lib/axiosInstance'
-import { DocumentId, Id } from '@/types/types'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { Person } from '@/types/types'
+import { useQuery } from '@tanstack/react-query'
 
-export const getPeoples = async () => {
+export const getPeople = async () => {
   try {
     const response = await api.get('/people')
     const data = (await response?.data.results) || []
+    const formatedData = data.map((person: Person) => {
+      return {
+        ...person,
+        id: person.url.split('/').slice(-2)[0]
+      }
+    })
 
-    return data
+    return formatedData
   } catch (error) {
     console.error('Error:', error)
     return []
   }
 }
 
-// people
-// People
-
-export const useGetPeoples = () => {
-  const { data } = useQuery({
+export const useGetPeople = () => {
+  const query = useQuery({
     queryKey: ['people'],
-    queryFn: getPeoples
+    queryFn: getPeople
   })
 
-  return data
+  return query
 }
 
-export const getPeople = async (documentId: string) => {
+export const getPerson = async (documentId: string) => {
   try {
     const response = await api.get(`/people/${documentId}`)
     const data = (await response?.data.data) || {}
@@ -38,73 +41,11 @@ export const getPeople = async (documentId: string) => {
   }
 }
 
-export const useGetPeople = (documentId: string) => {
+export const useGetPerson = (documentId: string) => {
   const { data } = useQuery({
     queryKey: ['people'],
-    queryFn: () => getPeople(documentId)
+    queryFn: () => getPerson(documentId)
   })
 
   return data
-}
-
-export const createPeople = async (people: people) => {
-  try {
-    const payload = { data: people }
-    const response = await api.post('/people', payload)
-    const data = (await response?.data.data) || []
-
-    return data
-  } catch (error) {
-    console.error('Error:', error)
-    return {}
-  }
-}
-
-export const useCreatePeople = () =>
-  useMutation({
-    mutationFn: createPeople
-  })
-
-export const editPeople = async ({
-  documentId,
-  people
-}: {
-  documentId: DocumentId
-  people: people
-}) => {
-  try {
-    const payload = { data: people }
-    const response = await api.put(`/people/${documentId}`, payload)
-    const data = (await response?.data.data) || []
-
-    return data
-  } catch (error) {
-    console.error('Error:', error)
-    return []
-  }
-}
-
-export const useEditPeople = () => {
-  return useMutation({
-    mutationFn: editPeople
-  })
-}
-
-export const deletePeople = async (id: Id) => {
-  try {
-    const response = await api.delete(`/people/${id}`)
-    const data = (await response?.data.data) || []
-
-    return data
-  } catch (error) {
-    console.error('Error:', error)
-    return []
-  }
-}
-
-export const useDeletePeople = (params: object) => {
-  return useMutation({
-    ...params,
-    mutationFn: deletePeople
-  })
 }
