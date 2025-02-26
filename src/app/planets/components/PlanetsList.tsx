@@ -15,22 +15,22 @@ import {
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import EditNoteIcon from '@mui/icons-material/EditNote'
-import { Person } from '@/types/types'
+import { Planet } from '@/types/types'
 
-type PeopleList = {
-  people: Person[]
-  isLoadingPeople: boolean
+type PlanetsListProp = {
+  planets: Planet[]
+  isLoadingPlanets: boolean
   errorLoading: boolean
 }
 
-const PeopleList: FC<PeopleList> = ({
-  people,
-  isLoadingPeople,
+const PlanetsList: FC<PlanetsListProp> = ({
+  planets,
+  isLoadingPlanets,
   errorLoading
 }) => {
   const [search, setSearch] = useState('')
 
-  if (isLoadingPeople) {
+  if (isLoadingPlanets) {
     return <>Loading...</>
   }
 
@@ -38,8 +38,8 @@ const PeopleList: FC<PeopleList> = ({
     return <>Error!</>
   }
 
-  const filteredPeople = people?.filter((person) =>
-    person.name.toLowerCase().includes(search.toLowerCase())
+  const filteredPlanets = planets?.filter((planet) =>
+    planet.name.toLowerCase().includes(search.toLowerCase())
   )
 
   return (
@@ -47,7 +47,7 @@ const PeopleList: FC<PeopleList> = ({
       <TableContainer className='flex flex-col items-center'>
         <Box className='mb-10'>
           <Typography className='text-center' variant='h2'>
-            People List
+            Planets List
           </Typography>
         </Box>
 
@@ -73,38 +73,40 @@ const PeopleList: FC<PeopleList> = ({
           <TableHead>
             <TableRow sx={{ '& > th': { fontWeight: 700 } }}>
               <TableCell>Name</TableCell>
-              <TableCell>gender</TableCell>
-              <TableCell>height</TableCell>
-              <TableCell>birth_year</TableCell>
+              <TableCell>gravity</TableCell>
+              <TableCell>climate</TableCell>
+              <TableCell>population</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {people?.length > 0 &&
-              filteredPeople.map(({ id, name, height, gender, birth_year }) => (
-                <TableRow
-                  key={name + birth_year}
-                  className='hover:bg-slate-300'
-                >
-                  <TableCell>{name}</TableCell>
-                  <TableCell>{gender}</TableCell>
-                  <TableCell>{height}</TableCell>
-                  <TableCell>{birth_year}</TableCell>
-                  <TableCell>
-                    <Box>
-                      <Link
-                        href={`/people/${id}`}
-                        className='ml-auto mr-4'
-                        passHref
-                      >
-                        <Button color='inherit' variant='outlined'>
-                          <EditNoteIcon />
-                        </Button>
-                      </Link>
-                    </Box>
-                  </TableCell>
-                </TableRow>
-              ))}
+            {planets?.length > 0 &&
+              filteredPlanets.map(
+                ({ id, name, climate, gravity, population }) => (
+                  <TableRow
+                    key={name + population}
+                    className='hover:bg-slate-300'
+                  >
+                    <TableCell>{name}</TableCell>
+                    <TableCell>{gravity}</TableCell>
+                    <TableCell>{climate}</TableCell>
+                    <TableCell>{population}</TableCell>
+                    <TableCell>
+                      <Box>
+                        <Link
+                          href={`/planets/${id}`}
+                          className='ml-auto mr-4'
+                          passHref
+                        >
+                          <Button color='inherit' variant='outlined'>
+                            <EditNoteIcon />
+                          </Button>
+                        </Link>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                )
+              )}
           </TableBody>
         </Table>
       </TableContainer>
@@ -112,4 +114,4 @@ const PeopleList: FC<PeopleList> = ({
   )
 }
 
-export default PeopleList
+export default PlanetsList
