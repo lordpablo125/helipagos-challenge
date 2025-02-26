@@ -9,7 +9,7 @@ const PageStarshipsList = () => {
   return (
     <StarshipsList
       starships={data}
-      isLoadingPlanets={isLoading}
+      isLoadingStarship={isLoading}
       errorLoading={error}
     />
   )
