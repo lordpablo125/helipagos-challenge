@@ -19,9 +19,6 @@ export const getStarships = async () => {
   }
 }
 
-// Starships
-// starships
-
 export const useGetStarships = () => {
   const query = useQuery({
     queryKey: ['starships'],
