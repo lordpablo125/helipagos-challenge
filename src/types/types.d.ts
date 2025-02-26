@@ -60,6 +60,7 @@ export type Planets = {
 }
 
 export type Starship = {
+  id: string
   name: string
   model: string
   manufacturer: string
