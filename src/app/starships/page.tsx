@@ -8,7 +8,7 @@ const PageStarshipsList = () => {
 
   return (
     <StarshipsList
-      planets={data}
+      starships={data}
       isLoadingPlanets={isLoading}
       errorLoading={error}
     />
