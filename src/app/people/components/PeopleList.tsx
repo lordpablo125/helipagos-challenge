@@ -81,36 +81,34 @@ const PeopleList: FC<PeopleList> = ({
           </TableHead>
           <TableBody>
             {people?.length > 0 &&
-              filteredPeople.map(
-                ({ id, name, height, gender, birth_year }: any) => (
-                  <TableRow
-                    key={name + birth_year}
-                    className='hover:bg-slate-300'
-                  >
-                    <TableCell>{name}</TableCell>
-                    <TableCell>{gender}</TableCell>
-                    <TableCell>{height}</TableCell>
-                    <TableCell>{birth_year}</TableCell>
-                    <TableCell>
-                      <Box>
-                        <Link
-                          href={`/people/${id}`}
-                          className='ml-auto mr-4'
-                          passHref
+              filteredPeople.map(({ id, name, height, gender, birth_year }) => (
+                <TableRow
+                  key={name + birth_year}
+                  className='hover:bg-slate-300'
+                >
+                  <TableCell>{name}</TableCell>
+                  <TableCell>{gender}</TableCell>
+                  <TableCell>{height}</TableCell>
+                  <TableCell>{birth_year}</TableCell>
+                  <TableCell>
+                    <Box>
+                      <Link
+                        href={`/people/${id}`}
+                        className='ml-auto mr-4'
+                        passHref
+                      >
+                        <Button
+                          className='bg-red-500'
+                          color='inherit'
+                          variant='outlined'
                         >
-                          <Button
-                            className='bg-red-500'
-                            color='inherit'
-                            variant='outlined'
-                          >
-                            <EditNoteIcon />
-                          </Button>
-                        </Link>
-                      </Box>
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
+                          <EditNoteIcon />
+                        </Button>
+                      </Link>
+                    </Box>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
