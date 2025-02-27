@@ -111,7 +111,6 @@ const PlanetShow: FC<PlanetShowProps> = ({ starship, isLoading, error }) => {
           variant='standard'
           disabled
         />
-
         <Box className='mx-auto'>
           <Link href='/starships' className='ml-auto mr-4' passHref>
             <Button color='inherit' variant='contained'>
