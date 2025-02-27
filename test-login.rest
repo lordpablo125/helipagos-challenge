@@ -1,0 +1,12 @@
+POST https://sandbox-be.helipagos.com/api/auth/login
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="username"
+
+pruebas_tecnica
+--MyBoundary
+Content-Disposition: form-data; name="password"
+
+pruebaspruebas
+--MyBoundary--

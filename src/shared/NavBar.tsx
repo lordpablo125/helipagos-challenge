@@ -38,7 +38,11 @@ const Navbar = () => {
             ))}
           </Box>
 
-          <Box>Login</Box>
+          <Box>
+            <Link href={'/login'} style={{ color: 'white' }}>
+              <Typography variant='body1'>login</Typography>
+            </Link>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
