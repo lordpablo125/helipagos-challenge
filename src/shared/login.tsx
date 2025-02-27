@@ -11,8 +11,6 @@ import {
 import { useRouter } from 'next/navigation'
 import { login } from '@/lib/auth'
 
-// pruebas_tecnica
-
 export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
